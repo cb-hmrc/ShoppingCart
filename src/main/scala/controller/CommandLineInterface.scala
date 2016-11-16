@@ -16,7 +16,7 @@ object CommandLineInterface {
       }
     }
     println(s"Shopping Cart contains: ${products.map(_.name).mkString(", ")}")
-    val cost = Checkout.calculateCost(products)
+    val cost = Checkout.calculateCostIncludingDiscount(products)
     println(s"Cost is £${cost}\n")
   }
 

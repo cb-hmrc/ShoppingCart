@@ -5,10 +5,14 @@ package model
  */
 object Checkout {
 
-  def calculateCost(products: List[Product]) : BigDecimal = {
+  def calculateCostBeforeDiscount(products: List[Product]) : BigDecimal = {
     products.foldLeft(BigDecimal("0"))(
       (sofar, product) => sofar + product.price
     )
+  }
+
+  def calculateCostIncludingDiscount(products: List[Product]) : BigDecimal = {
+    calculateCostBeforeDiscount(products) - ProductOffers.calculateDiscount(products)
   }
 
 }
